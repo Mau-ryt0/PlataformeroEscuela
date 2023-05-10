@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SplashScreenMusic.ogg-fee0850911a21cd919a5f472e749e273.oggstr"
+
+[deps]
+
+source_file="res://Assets/SplashScreenMusic.ogg"
+dest_files=[ "res://.import/SplashScreenMusic.ogg-fee0850911a21cd919a5f472e749e273.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
