@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Fart.ogg-17204e1037478e207d41941a99e4b87c.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dma7lgvanxnv6"
+path="res://.godot/imported/Fart.ogg-17204e1037478e207d41941a99e4b87c.oggvorbisstr"
 
 [deps]
 
 source_file="res://Assets/Fart.ogg"
-dest_files=[ "res://.import/Fart.ogg-17204e1037478e207d41941a99e4b87c.oggstr" ]
+dest_files=["res://.godot/imported/Fart.ogg-17204e1037478e207d41941a99e4b87c.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

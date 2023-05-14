@@ -1,12 +1,14 @@
 extends StaticBody2D
 
-export var life = 1
+@export var life = 1
 
 signal broken
 
 func _ready():
 	if (life == 1):
-		$Sprite.modulate = Color(128, 128, 128)
+		$Sprite.frame = 0
+	else:
+		$Sprite.frame = 1
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player" and life == 0:

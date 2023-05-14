@@ -1,31 +1,28 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://bo1assoiy3qut"]
 
-[ext_resource path="res://Scripts/Credits.gd" type="Script" id=1]
-[ext_resource path="res://Qdbettercomicsans-jEEeG.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Assets/Credits.ogg" type="AudioStream" id=3]
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 2 )
+[ext_resource type="Script" path="res://Scripts/Credits.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://cur78p0edln6j" path="res://Qdbettercomicsans-jEEeG.ttf" id="2"]
+[ext_resource type="AudioStream" uid="uid://bpcnaw6xol24x" path="res://Assets/Credits.ogg" id="3"]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -160.0
-margin_top = 576.0
-margin_right = 153.0
-margin_bottom = 1773.0
-custom_fonts/font = SubResource( 1 )
+offset_left = -96.0
+offset_top = 576.0
+offset_right = 96.0
+offset_bottom = 1304.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 32
 text = "Equipo:
 Amaury
 Johan
-Adan
-Alex
 
 Programacion:
 Amaury
@@ -50,12 +47,11 @@ Johan
 
 
 
-
 No pude poner tildes xd"
-align = 1
+horizontal_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource("3")
 autoplay = true
 
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_AudioStreamPlayer2D_finished"]

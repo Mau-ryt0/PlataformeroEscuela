@@ -1,42 +1,53 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://dkj8d3x3oi0ue"]
 
-[ext_resource path="res://Assets/button1.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/TouchControl.gd" type="Script" id=2]
-[ext_resource path="res://Assets/restart.png" type="Texture" id=3]
+[ext_resource type="Texture2D" uid="uid://coofhqvq838ki" path="res://Assets/button1.png" id="1"]
+[ext_resource type="Script" path="res://Scripts/TouchControl.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://7e74heqlv1sp" path="res://Assets/restart.png" id="3"]
 
 [node name="Control" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 2 )
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Left" type="TouchScreenButton" parent="CanvasLayer"]
-modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 0.935672, 2.19847 )
-normal = ExtResource( 1 )
+scale = Vector2(0.561404, 2.19847)
+texture_normal = ExtResource("1")
 action = "ui_left"
 
 [node name="Right" type="TouchScreenButton" parent="CanvasLayer"]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 640, 576 )
+position = Vector2(1024, 576)
 rotation = 3.14159
-scale = Vector2( 0.935401, 2.19793 )
-normal = ExtResource( 1 )
+scale = Vector2(0.561403, 2.19847)
+texture_normal = ExtResource("1")
 action = "ui_right"
 
 [node name="NextLevel" type="TouchScreenButton" parent="CanvasLayer"]
-visible = false
-modulate = Color( 0, 1, 0.109804, 1 )
-position = Vector2( 352, 501.755 )
+modulate = Color(0, 1, 0.109804, 1)
+position = Vector2(544, 472)
 rotation = 3.14159
-scale = Vector2( 0.18718, 0.202211 )
-normal = ExtResource( 1 )
+scale = Vector2(0.18718, 0.202211)
+texture_normal = ExtResource("1")
 action = "ui_accept"
 
 [node name="Restart" type="TouchScreenButton" parent="CanvasLayer"]
-position = Vector2( 640, 64 )
+position = Vector2(832, 64)
 rotation = 3.14159
-scale = Vector2( 0.0316018, 0.0318371 )
-normal = ExtResource( 3 )
+scale = Vector2(0.0316018, 0.0318371)
+texture_normal = ExtResource("3")
 action = "Restart"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+offset_right = 192.0
+offset_bottom = 576.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer2"]
+offset_left = 832.0
+offset_right = 1024.0
+offset_bottom = 576.0
+color = Color(0, 0, 0, 1)

@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://cd5fcog5rxo3a"]
+
+[ext_resource type="PackedScene" uid="uid://cnvaul6ds3wkj" path="res://Objects/Player.tscn" id="1"]
+[ext_resource type="AudioStream" uid="uid://dma7lgvanxnv6" path="res://Assets/Fart.ogg" id="3"]
+[ext_resource type="TileSet" uid="uid://m3qd6wtau3ur" path="res://Tiles.tres" id="3_21gsd"]
+[ext_resource type="PackedScene" uid="uid://mtg4g73n6woa" path="res://Objects/Brick.tscn" id="6"]
+[ext_resource type="Script" path="res://Scripts/Level.gd" id="7"]
+[ext_resource type="AudioStream" uid="uid://ck3iajd04c7if" path="res://Assets/Ctm.ogg" id="8"]
+[ext_resource type="AudioStream" uid="uid://3tx0x5vk3xn6" path="res://Assets/low quality royalty free music.ogg" id="9"]
+[ext_resource type="PackedScene" path="res://Objects/Star.tscn" id="10"]
+[ext_resource type="AudioStream" uid="uid://dg10e2h2rdx4q" path="res://Assets/Scream.ogg" id="11"]
+[ext_resource type="VideoStream" path="res://Assets/Explosion.ogv" id="12"]
+[ext_resource type="PackedScene" uid="uid://dkj8d3x3oi0ue" path="res://TouchControl.tscn" id="13"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(192, 0)
+script = ExtResource("7")
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(160, 464)
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(2, 2)
+tile_set = ExtResource("3_21gsd")
+format = 2
+layer_0/tile_data = PackedInt32Array(1114112, 0, 0, 1114113, 0, 0, 1114114, 0, 0, 1114115, 0, 0, 1114116, 0, 0, 1114117, 0, 0, 1114118, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 524288, 0, 0, 589824, 0, 0, 655360, 0, 0, 720896, 0, 0, 786432, 0, 0, 851968, 0, 0, 917504, 0, 0, 983040, 0, 0, 1048576, 0, 0, 131072, 0, 0, 196608, 0, 0, 262144, 0, 0, 327680, 0, 0, 393216, 0, 0, 458752, 0, 0)
+
+[node name="Brick1" parent="." instance=ExtResource("6")]
+position = Vector2(48, 496)
+life = 0
+
+[node name="Brick2" parent="." instance=ExtResource("6")]
+position = Vector2(112, 432)
+life = 0
+
+[node name="Brick3" parent="." instance=ExtResource("6")]
+position = Vector2(128, 304)
+life = 0
+
+[node name="Brick4" parent="." instance=ExtResource("6")]
+position = Vector2(240, 272)
+life = 0
+
+[node name="Brick5" parent="." instance=ExtResource("6")]
+position = Vector2(48, 368)
+life = 0
+
+[node name="Brick6" parent="." instance=ExtResource("6")]
+position = Vector2(368, 432)
+life = 0
+
+[node name="Star" parent="." instance=ExtResource("10")]
+position = Vector2(480, 360)
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8")
+volume_db = 8.357
+
+[node name="FartSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3")
+volume_db = 4.643
+
+[node name="ScreamSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11")
+volume_db = 11.143
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9")
+volume_db = -17.643
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -80.0
+offset_right = 99.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Presiona espacio o enter."
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+visible = false
+offset_left = 746.0
+offset_top = 342.0
+offset_right = 1610.0
+offset_bottom = 822.0
+scale = Vector2(0.052, 0.075)
+stream = ExtResource("12")
+
+[node name="Control" parent="." instance=ExtResource("13")]
+
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
+[connection signal="next" from="Player" to="." method="_on_Player_next"]
+[connection signal="broken" from="Brick1" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick2" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick3" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick4" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick5" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick6" to="." method="_on_Brick_broken"]
+[connection signal="GotStar" from="Star" to="." method="_on_Star_GotStar"]
+[connection signal="GotStar" from="Star" to="Player" method="_on_Star_GotStar"]
+[connection signal="finished" from="DeathSound" to="." method="_on_DeathSound_finished"]
+[connection signal="finished" from="CanvasLayer/VideoPlayer" to="." method="_on_VideoPlayer_finished"]
