@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbp8yljgbur34"]
+[gd_scene load_steps=13 format=3 uid="uid://cbp8yljgbur34"]
 
 [ext_resource type="PackedScene" uid="uid://cnvaul6ds3wkj" path="res://Objects/Player.tscn" id="1"]
 [ext_resource type="AudioStream" uid="uid://dma7lgvanxnv6" path="res://Assets/Fart.ogg" id="3"]
@@ -10,64 +10,79 @@
 [ext_resource type="PackedScene" path="res://Objects/Star.tscn" id="10"]
 [ext_resource type="AudioStream" uid="uid://dg10e2h2rdx4q" path="res://Assets/Scream.ogg" id="11"]
 [ext_resource type="VideoStream" path="res://Assets/Explosion.ogv" id="12"]
+[ext_resource type="Texture2D" uid="uid://bfeulirbtwllk" path="res://Assets/msedge_zG3S9qrTNb.png" id="12_afq1c"]
 [ext_resource type="PackedScene" uid="uid://dkj8d3x3oi0ue" path="res://TouchControl.tscn" id="13"]
 
 [node name="Node2D" type="Node2D"]
+process_mode = 3
 position = Vector2(192, 0)
 script = ExtResource("7")
 
 [node name="Player" parent="." instance=ExtResource("1")]
+process_mode = 1
 position = Vector2(64, 112)
 
 [node name="TileMap" type="TileMap" parent="."]
+process_mode = 1
 scale = Vector2(2, 2)
 tile_set = ExtResource("3_se1ot")
 format = 2
 layer_0/name = "Grass"
-layer_0/tile_data = PackedInt32Array(393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 327696, 0, 0, 262160, 0, 0, 393232, 0, 0, 458768, 0, 0, 524304, 0, 0, 589840, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 458765, 0, 0, 524301, 0, 0, 589837, 0, 0)
+layer_0/tile_data = PackedInt32Array(393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 327696, 0, 0, 262160, 0, 0, 393232, 0, 0, 458768, 0, 0, 524304, 0, 0, 589840, 0, 0, 851985, 0, 0, 851986, 0, 0, 458765, 0, 0, 524301, 0, 0, 589837, 0, 0)
 
 [node name="Brick1" parent="." instance=ExtResource("6")]
+process_mode = 1
 position = Vector2(176, 208)
 
 [node name="Brick2" parent="." instance=ExtResource("6")]
+process_mode = 1
 position = Vector2(208, 208)
 life = 0
 
 [node name="Brick3" parent="." instance=ExtResource("6")]
+process_mode = 1
 position = Vector2(464, 208)
 life = 0
 
 [node name="Brick4" parent="." instance=ExtResource("6")]
+process_mode = 1
 position = Vector2(496, 208)
 life = 0
 
 [node name="Brick5" parent="." instance=ExtResource("6")]
+process_mode = 1
 position = Vector2(336, 208)
 life = 0
 
 [node name="Brick6" parent="." instance=ExtResource("6")]
+process_mode = 1
 position = Vector2(464, 432)
 life = 0
 
 [node name="Star" parent="." instance=ExtResource("10")]
+process_mode = 1
 position = Vector2(576, 360)
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8")
 volume_db = 8.357
+bus = &"SFX"
 
 [node name="FartSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3")
 volume_db = 4.643
+bus = &"SFX"
 
 [node name="ScreamSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11")
 volume_db = 11.143
+bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9")
 volume_db = -17.643
 autoplay = true
+bus = &"Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -88,13 +103,22 @@ text = "Presiona espacio o enter."
 
 [node name="VideoPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
 offset_left = 746.0
-offset_top = 342.0
+offset_top = 343.0
 offset_right = 1610.0
-offset_bottom = 822.0
-scale = Vector2(0.052, 0.075)
+offset_bottom = 823.0
+scale = Vector2(0.051, 0.07)
 stream = ExtResource("12")
+metadata/_edit_use_anchors_ = true
 
 [node name="Control" parent="." instance=ExtResource("13")]
+offset_left = -192.0
+offset_right = -192.0
+
+[node name="BG" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(320, 288)
+scale = Vector2(0.4, 0.64)
+texture = ExtResource("12_afq1c")
 
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 [connection signal="next" from="Player" to="." method="_on_Player_next"]
@@ -108,3 +132,4 @@ stream = ExtResource("12")
 [connection signal="GotStar" from="Star" to="Player" method="_on_Star_GotStar"]
 [connection signal="finished" from="DeathSound" to="." method="_on_DeathSound_finished"]
 [connection signal="finished" from="CanvasLayer/VideoPlayer" to="." method="_on_VideoPlayer_finished"]
+[connection signal="next" from="Control" to="." method="_on_control_next"]

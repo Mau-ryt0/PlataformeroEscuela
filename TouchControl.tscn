@@ -1,20 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkj8d3x3oi0ue"]
+[gd_scene load_steps=6 format=3 uid="uid://dkj8d3x3oi0ue"]
 
 [ext_resource type="Texture2D" uid="uid://coofhqvq838ki" path="res://Assets/button1.png" id="1"]
 [ext_resource type="Script" path="res://Scripts/TouchControl.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://7e74heqlv1sp" path="res://Assets/restart.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cwh5uqjsfytjp" path="res://Assets/Burger_button.png" id="4_jadwr"]
+[ext_resource type="Texture2D" uid="uid://c6jgnp8lnvfr2" path="res://Assets/Pause_button.jpeg" id="5_wk64v"]
 
 [node name="Control" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("2")
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 192.0
+offset_bottom = 584.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer2"]
+offset_left = 832.0
+offset_top = -8.0
+offset_right = 1032.0
+offset_bottom = 584.0
+color = Color(0, 0, 0, 1)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="Left" type="TouchScreenButton" parent="CanvasLayer"]
 scale = Vector2(0.561404, 2.19847)
 texture_normal = ExtResource("1")
 action = "ui_left"
+visibility_mode = 1
 
 [node name="Right" type="TouchScreenButton" parent="CanvasLayer"]
 position = Vector2(1024, 576)
@@ -22,32 +43,40 @@ rotation = 3.14159
 scale = Vector2(0.561403, 2.19847)
 texture_normal = ExtResource("1")
 action = "ui_right"
+visibility_mode = 1
 
 [node name="NextLevel" type="TouchScreenButton" parent="CanvasLayer"]
+visible = false
 modulate = Color(0, 1, 0.109804, 1)
 position = Vector2(544, 472)
 rotation = 3.14159
 scale = Vector2(0.18718, 0.202211)
 texture_normal = ExtResource("1")
-action = "ui_accept"
+visibility_mode = 1
 
 [node name="Restart" type="TouchScreenButton" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.501961)
 position = Vector2(832, 64)
 rotation = 3.14159
 scale = Vector2(0.0316018, 0.0318371)
 texture_normal = ExtResource("3")
-action = "Restart"
+visibility_mode = 1
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-layer = 0
+[node name="Pause" type="TouchScreenButton" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(480, 0)
+scale = Vector2(0.0551249, 0.0592593)
+texture_normal = ExtResource("5_wk64v")
+visibility_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
-offset_right = 192.0
-offset_bottom = 576.0
-color = Color(0, 0, 0, 1)
+[node name="LevelSelect" type="TouchScreenButton" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(192, 0)
+scale = Vector2(0.266667, 0.266667)
+texture_normal = ExtResource("4_jadwr")
+visibility_mode = 1
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer2"]
-offset_left = 832.0
-offset_right = 1024.0
-offset_bottom = 576.0
-color = Color(0, 0, 0, 1)
+[connection signal="pressed" from="CanvasLayer/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect" to="." method="_on_level_select_pressed"]

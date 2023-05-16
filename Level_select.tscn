@@ -1,0 +1,118 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvcuxp6ccuyam"]
+
+[ext_resource type="Script" path="res://Scripts/Level_select.gd" id="1_djtxm"]
+[ext_resource type="Texture2D" uid="uid://dkmeaq0yya0i3" path="res://Assets/Red_button.png" id="1_gp1s1"]
+[ext_resource type="Texture2D" uid="uid://bdubeenuyo5gx" path="res://Assets/Lvl_s_BG.jpeg" id="2_888ys"]
+[ext_resource type="FontFile" uid="uid://cur78p0edln6j" path="res://Qdbettercomicsans-jEEeG.ttf" id="2_d1lgw"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_djtxm")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Label" type="Label" parent="CanvasLayer3"]
+offset_left = 64.0
+offset_top = 80.0
+offset_right = 128.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("2_d1lgw")
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer3"]
+offset_left = 192.0
+offset_top = 80.0
+offset_right = 256.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("2_d1lgw")
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer3"]
+offset_left = 320.0
+offset_top = 80.0
+offset_right = 384.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("2_d1lgw")
+theme_override_font_sizes/font_size = 24
+text = "2"
+horizontal_alignment = 1
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Level" type="Button" parent="CanvasLayer2"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 712.0
+offset_bottom = 712.0
+scale = Vector2(0.099, 0.099)
+icon = ExtResource("1_gp1s1")
+
+[node name="Level1" type="Button" parent="CanvasLayer2"]
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 840.0
+offset_bottom = 712.0
+scale = Vector2(0.099, 0.099)
+icon = ExtResource("1_gp1s1")
+
+[node name="Level2" type="Button" parent="CanvasLayer2"]
+offset_left = 320.0
+offset_top = 64.0
+offset_right = 968.0
+offset_bottom = 712.0
+scale = Vector2(0.099, 0.099)
+icon = ExtResource("1_gp1s1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 384.0
+offset_bottom = 128.0
+
+[node name="Level" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(3.8147e-06, 3.8147e-06)
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("1_gp1s1")
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Level1" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(128, 3.8147e-06)
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("1_gp1s1")
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="Level2" type="TouchScreenButton" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(256, 3.8147e-06)
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("1_gp1s1")
+visibility_mode = 1
+metadata/_edit_group_ = true
+
+[node name="LvlSBg" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(512, 288)
+scale = Vector2(1.50588, 1.34895)
+texture = ExtResource("2_888ys")
+
+[connection signal="pressed" from="CanvasLayer2/Level" to="." method="_on_level_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Level" to="." method="_on_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Level2" to="." method="_on_level_2_pressed"]

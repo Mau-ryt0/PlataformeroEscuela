@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo1assoiy3qut"]
+[gd_scene load_steps=5 format=3 uid="uid://bo1assoiy3qut"]
 
 [ext_resource type="Script" path="res://Scripts/Credits.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://cur78p0edln6j" path="res://Qdbettercomicsans-jEEeG.ttf" id="2"]
 [ext_resource type="AudioStream" uid="uid://bpcnaw6xol24x" path="res://Assets/Credits.ogg" id="3"]
+[ext_resource type="Texture2D" uid="uid://cwh5uqjsfytjp" path="res://Assets/Burger_button.png" id="3_ss1cy"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1")
@@ -50,8 +51,21 @@ Johan
 No pude poner tildes xd"
 horizontal_alignment = 1
 
+[node name="LevelSelect" type="TouchScreenButton" parent="CanvasLayer"]
+scale = Vector2(0.266667, 0.266667)
+texture_normal = ExtResource("3_ss1cy")
+visibility_mode = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+visible = false
+offset_right = 176.0
+offset_bottom = 64.0
+text = "presiona M para seleccionar
+un nivel"
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3")
 autoplay = true
 
+[connection signal="pressed" from="CanvasLayer/LevelSelect" to="." method="_on_level_select_pressed"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_AudioStreamPlayer2D_finished"]

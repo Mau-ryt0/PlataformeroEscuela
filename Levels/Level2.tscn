@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://meqopivoqiap"]
+[gd_scene load_steps=13 format=3 uid="uid://meqopivoqiap"]
 
 [ext_resource type="PackedScene" uid="uid://cnvaul6ds3wkj" path="res://Objects/Player.tscn" id="1"]
 [ext_resource type="AudioStream" uid="uid://dma7lgvanxnv6" path="res://Assets/Fart.ogg" id="3"]
@@ -10,57 +10,71 @@
 [ext_resource type="PackedScene" path="res://Objects/Star.tscn" id="10"]
 [ext_resource type="AudioStream" uid="uid://dg10e2h2rdx4q" path="res://Assets/Scream.ogg" id="11"]
 [ext_resource type="VideoStream" path="res://Assets/Explosion.ogv" id="12"]
+[ext_resource type="Texture2D" uid="uid://bfeulirbtwllk" path="res://Assets/msedge_zG3S9qrTNb.png" id="12_s3bm3"]
 [ext_resource type="PackedScene" uid="uid://dkj8d3x3oi0ue" path="res://TouchControl.tscn" id="13"]
 
 [node name="Node2D" type="Node2D"]
+process_mode = 3
 position = Vector2(192, 0)
 script = ExtResource("7")
 
 [node name="Player" parent="." instance=ExtResource("1")]
+process_mode = 1
 position = Vector2(16, 16)
 
 [node name="TileMap" type="TileMap" parent="."]
+process_mode = 1
 scale = Vector2(2, 2)
 tile_set = ExtResource("3_35l6t")
 format = 2
 layer_0/tile_data = PackedInt32Array(196608, 0, 0, 524301, 0, 0, 589837, 0, 0, 655373, 0, 0, 720909, 0, 0)
 
 [node name="Brick1" parent="." instance=ExtResource("6")]
+process_mode = 1
 position = Vector2(208, 560)
 life = 0
 
 [node name="Brick2" parent="." instance=ExtResource("6")]
+process_mode = 1
 position = Vector2(304, 528)
 life = 0
 
 [node name="Brick3" parent="." instance=ExtResource("6")]
+process_mode = 1
 position = Vector2(368, 496)
 life = 0
 
 [node name="Brick4" parent="." instance=ExtResource("6")]
+process_mode = 1
 position = Vector2(368, 368)
 life = 0
 
 [node name="Brick5" parent="." instance=ExtResource("6")]
+process_mode = 1
 position = Vector2(304, 432)
 life = 0
 
 [node name="Brick6" parent="." instance=ExtResource("6")]
+process_mode = 1
 position = Vector2(304, 304)
 life = 0
 
 [node name="Star" parent="." instance=ExtResource("10")]
+process_mode = 1
 position = Vector2(480, 280)
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 1
 stream = ExtResource("8")
 volume_db = 8.357
 
 [node name="FartSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 1
 stream = ExtResource("3")
 volume_db = 4.643
 
 [node name="ScreamSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 1
 stream = ExtResource("11")
 volume_db = 11.143
 
@@ -91,10 +105,18 @@ offset_left = 746.0
 offset_top = 342.0
 offset_right = 1610.0
 offset_bottom = 822.0
-scale = Vector2(0.052, 0.075)
+scale = Vector2(0.051, 0.072)
 stream = ExtResource("12")
 
 [node name="Control" parent="." instance=ExtResource("13")]
+offset_left = -192.0
+offset_right = -192.0
+
+[node name="BG" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(320, 288)
+scale = Vector2(0.4, 0.64)
+texture = ExtResource("12_s3bm3")
 
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 [connection signal="next" from="Player" to="." method="_on_Player_next"]
@@ -108,3 +130,4 @@ stream = ExtResource("12")
 [connection signal="GotStar" from="Star" to="Player" method="_on_Star_GotStar"]
 [connection signal="finished" from="DeathSound" to="." method="_on_DeathSound_finished"]
 [connection signal="finished" from="CanvasLayer/VideoPlayer" to="." method="_on_VideoPlayer_finished"]
+[connection signal="next" from="Control" to="." method="_on_control_next"]

@@ -1,6 +1,8 @@
 res://default_bus_layout.tres
-res://SplashScreen.tscn
+res://Scripts/TouchControl.gd
+res://TouchControl.tscn
 res://Tiles.tres
+res://SplashScreen.tscn
 res://Levels/Level.tscn
 res://Levels/Level1.tscn
 res://Levels/Level2.tscn
@@ -8,5 +10,11 @@ res://Levels/Level3.tscn
 res://Credits.tscn
 res://Objects/Spikes.tscn
 res://Objects/Player.tscn
-res://Scripts/Player.gd
+res://Scripts/Level.gd
+res://Level_select.tscn
+res://scam_scene.tscn
+res://Scripts/scam_scene.gd
+res://Scripts/SplashScreen.gd
+res://Scripts/Level_select.gd
+res://Scripts/Credits.gd
 res://Scripts/Global.gd

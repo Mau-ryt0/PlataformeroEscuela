@@ -1,1 +1,15 @@
+CanvasLayer
+CanvasGroup
+Label
+Button
+CollisionShape2D
+Area2D
+CharacterBody2D
+TouchScreenButton
+Timer
+ColorRect
+Control
+HBoxContainer
+Node2D
+TextureRect
 Node
