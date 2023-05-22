@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dk3i3me4of3m0"]
+[gd_scene load_steps=15 format=3 uid="uid://dk3i3me4of3m0"]
 
 [ext_resource type="PackedScene" uid="uid://cnvaul6ds3wkj" path="res://Objects/Player.tscn" id="1"]
 [ext_resource type="AudioStream" uid="uid://dma7lgvanxnv6" path="res://Assets/Fart.ogg" id="3"]
 [ext_resource type="TileSet" uid="uid://m3qd6wtau3ur" path="res://Tiles.tres" id="3_bh0nl"]
 [ext_resource type="PackedScene" uid="uid://mtg4g73n6woa" path="res://Objects/Brick.tscn" id="6"]
 [ext_resource type="Script" path="res://Scripts/Level.gd" id="7"]
+[ext_resource type="AudioStream" uid="uid://0hvy0r1qm8w5" path="res://Assets/A jaja.ogg" id="7_8ebcq"]
 [ext_resource type="AudioStream" uid="uid://ck3iajd04c7if" path="res://Assets/Ctm.ogg" id="8"]
 [ext_resource type="AudioStream" uid="uid://3tx0x5vk3xn6" path="res://Assets/low quality royalty free music.ogg" id="9"]
 [ext_resource type="PackedScene" path="res://Objects/Star.tscn" id="10"]
@@ -29,15 +30,6 @@ scale = Vector2(2, 2)
 tile_set = ExtResource("3_bh0nl")
 format = 2
 layer_0/tile_data = PackedInt32Array(851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 196608, 0, 0)
-
-[node name="SpikesMap" type="TileMap" parent="."]
-process_mode = 1
-visible = false
-position = Vector2(0, 32)
-scale = Vector2(2, 2)
-tile_set = ExtResource("3_bh0nl")
-format = 2
-layer_0/tile_data = PackedInt32Array(786432, 1, 0, 786433, 1, 0, 786434, 1, 0, 786435, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720905, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0)
 
 [node name="Brick1" parent="." instance=ExtResource("6")]
 process_mode = 1
@@ -81,6 +73,11 @@ position = Vector2(40, 496)
 process_mode = 1
 stream = ExtResource("8")
 volume_db = 8.357
+
+[node name="DeathSound2" type="AudioStreamPlayer2D" parent="."]
+process_mode = 1
+stream = ExtResource("7_8ebcq")
+volume_db = 11.143
 
 [node name="FartSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 1
@@ -183,7 +180,6 @@ texture = ExtResource("13_wgep7")
 
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 [connection signal="next" from="Player" to="." method="_on_Player_next"]
-[connection signal="child_entered_tree" from="SpikesMap" to="Player" method="_on_spikes_map_child_entered_tree"]
 [connection signal="broken" from="Brick1" to="." method="_on_Brick_broken"]
 [connection signal="broken" from="Brick2" to="." method="_on_Brick_broken"]
 [connection signal="broken" from="Brick3" to="." method="_on_Brick_broken"]
@@ -194,5 +190,21 @@ texture = ExtResource("13_wgep7")
 [connection signal="GotStar" from="Star" to="." method="_on_Star_GotStar"]
 [connection signal="GotStar" from="Star" to="Player" method="_on_Star_GotStar"]
 [connection signal="finished" from="DeathSound" to="." method="_on_DeathSound_finished"]
+[connection signal="finished" from="DeathSound2" to="." method="_on_DeathSound_finished"]
 [connection signal="finished" from="CanvasLayer/VideoPlayer" to="." method="_on_VideoPlayer_finished"]
 [connection signal="next" from="Control" to="." method="_on_control_next"]
+[connection signal="kill" from="Node/Spikes" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes2" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes3" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes4" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes5" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes6" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes7" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes8" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes9" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes10" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes11" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes12" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes13" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes14" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes15" to="." method="_on_spikes_kill"]

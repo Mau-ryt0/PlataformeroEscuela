@@ -1,6 +1,9 @@
 extends Node2D
 
+var tween
+
 func _ready():
+	Global.canMove = true
 	Global.canChange = false
 	if OS.get_name() == "Android":
 		$CanvasLayer/Label.queue_free()
@@ -42,3 +45,10 @@ func _on_Brick_broken():
 func _on_control_next():
 	$CanvasLayer/VideoPlayer.show()
 	$CanvasLayer/VideoPlayer.play()
+
+func _on_spikes_kill():
+	Global.canMove = false
+	$DeathSound2.play()
+	tween = create_tween()
+	tween.tween_property($Player, "modulate", Color(255, 255, 255, 0), 0.5)
+#	tween.tween_callback($Player.queue_free).set_delay(0.5)

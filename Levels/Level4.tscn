@@ -1,0 +1,215 @@
+[gd_scene load_steps=15 format=3 uid="uid://blnjica1tsxrd"]
+
+[ext_resource type="Script" path="res://Scripts/Level.gd" id="1_jlre6"]
+[ext_resource type="PackedScene" uid="uid://cnvaul6ds3wkj" path="res://Objects/Player.tscn" id="2_y8uh3"]
+[ext_resource type="TileSet" uid="uid://m3qd6wtau3ur" path="res://Tiles.tres" id="3_pp0q6"]
+[ext_resource type="PackedScene" uid="uid://mtg4g73n6woa" path="res://Objects/Brick.tscn" id="4_f2aiy"]
+[ext_resource type="PackedScene" path="res://Objects/Star.tscn" id="5_u7bj0"]
+[ext_resource type="AudioStream" uid="uid://ck3iajd04c7if" path="res://Assets/Ctm.ogg" id="6_jjkl5"]
+[ext_resource type="AudioStream" uid="uid://0hvy0r1qm8w5" path="res://Assets/A jaja.ogg" id="7_66dqy"]
+[ext_resource type="AudioStream" uid="uid://dma7lgvanxnv6" path="res://Assets/Fart.ogg" id="8_dgd3v"]
+[ext_resource type="AudioStream" uid="uid://dg10e2h2rdx4q" path="res://Assets/Scream.ogg" id="9_vgtcw"]
+[ext_resource type="AudioStream" uid="uid://3tx0x5vk3xn6" path="res://Assets/low quality royalty free music.ogg" id="10_tyiy3"]
+[ext_resource type="VideoStream" path="res://Assets/Explosion.ogv" id="11_2yhuh"]
+[ext_resource type="PackedScene" uid="uid://dkj8d3x3oi0ue" path="res://TouchControl.tscn" id="12_odahn"]
+[ext_resource type="PackedScene" uid="uid://b7sa51emxaxe4" path="res://Objects/Spikes.tscn" id="13_ia5mr"]
+[ext_resource type="Texture2D" uid="uid://bfeulirbtwllk" path="res://Assets/msedge_zG3S9qrTNb.png" id="14_jrvf6"]
+
+[node name="Node2D" type="Node2D"]
+process_mode = 3
+position = Vector2(192, 0)
+script = ExtResource("1_jlre6")
+
+[node name="Player" parent="." instance=ExtResource("2_y8uh3")]
+process_mode = 1
+position = Vector2(16, 16)
+
+[node name="TileMap" type="TileMap" parent="."]
+process_mode = 1
+scale = Vector2(2, 2)
+tile_set = ExtResource("3_pp0q6")
+format = 2
+layer_0/tile_data = PackedInt32Array(196608, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 851971, 0, 0, 655363, 0, 0, 720899, 0, 0, 786435, 0, 0, 917507, 0, 0, 917510, 0, 0, 917511, 0, 0)
+
+[node name="Brick1" parent="." instance=ExtResource("4_f2aiy")]
+process_mode = 1
+position = Vector2(144, 560)
+life = 0
+
+[node name="Brick2" parent="." instance=ExtResource("4_f2aiy")]
+process_mode = 1
+position = Vector2(176, 240)
+life = 0
+
+[node name="Brick3" parent="." instance=ExtResource("4_f2aiy")]
+process_mode = 1
+position = Vector2(144, 432)
+life = 0
+
+[node name="Brick4" parent="." instance=ExtResource("4_f2aiy")]
+process_mode = 1
+position = Vector2(304, 368)
+life = 0
+
+[node name="Brick5" parent="." instance=ExtResource("4_f2aiy")]
+process_mode = 1
+position = Vector2(336, 560)
+life = 0
+
+[node name="Brick6" parent="." instance=ExtResource("4_f2aiy")]
+process_mode = 1
+position = Vector2(16, 240)
+
+[node name="Brick7" parent="." instance=ExtResource("4_f2aiy")]
+process_mode = 1
+position = Vector2(112, 240)
+life = 0
+
+[node name="Star" parent="." instance=ExtResource("5_u7bj0")]
+process_mode = 1
+position = Vector2(40, 496)
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 1
+stream = ExtResource("6_jjkl5")
+volume_db = 8.357
+
+[node name="DeathSound2" type="AudioStreamPlayer2D" parent="."]
+process_mode = 1
+stream = ExtResource("7_66dqy")
+volume_db = 11.143
+
+[node name="FartSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 1
+stream = ExtResource("8_dgd3v")
+volume_db = 4.643
+
+[node name="ScreamSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 1
+stream = ExtResource("9_vgtcw")
+volume_db = 11.143
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_tyiy3")
+volume_db = -17.643
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -80.0
+offset_right = 99.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Presiona espacio o enter."
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+visible = false
+offset_left = 210.0
+offset_top = 478.0
+offset_right = 1074.0
+offset_bottom = 958.0
+scale = Vector2(0.052, 0.075)
+stream = ExtResource("11_2yhuh")
+
+[node name="Control" parent="." instance=ExtResource("12_odahn")]
+offset_left = -192.0
+offset_right = -192.0
+
+[node name="Node" type="Node" parent="."]
+process_mode = 1
+
+[node name="Spikes" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(208, 272)
+
+[node name="Spikes2" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(240, 272)
+
+[node name="Spikes3" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(272, 272)
+
+[node name="Spikes4" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(304, 272)
+
+[node name="Spikes5" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(336, 272)
+
+[node name="Spikes6" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(368, 272)
+
+[node name="Spikes8" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(464, 400)
+
+[node name="Spikes9" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(496, 400)
+
+[node name="Spikes10" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(528, 400)
+
+[node name="Spikes11" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(560, 400)
+
+[node name="Spikes12" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(336, 464)
+rotation = 1.5708
+
+[node name="Spikes13" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(304, 80)
+
+[node name="Spikes14" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(336, 80)
+
+[node name="Spikes15" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(368, 80)
+
+[node name="Spikes16" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(400, 432)
+
+[node name="Spikes17" parent="Node" instance=ExtResource("13_ia5mr")]
+position = Vector2(432, 432)
+
+[node name="BG" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(320, 288)
+scale = Vector2(0.4, 0.64)
+texture = ExtResource("14_jrvf6")
+
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
+[connection signal="next" from="Player" to="." method="_on_Player_next"]
+[connection signal="broken" from="Brick1" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick2" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick3" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick4" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick5" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick6" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick7" to="." method="_on_Brick_broken"]
+[connection signal="GotStar" from="Star" to="." method="_on_Star_GotStar"]
+[connection signal="GotStar" from="Star" to="Player" method="_on_Star_GotStar"]
+[connection signal="finished" from="DeathSound" to="." method="_on_DeathSound_finished"]
+[connection signal="finished" from="DeathSound2" to="." method="_on_DeathSound_finished"]
+[connection signal="finished" from="CanvasLayer/VideoPlayer" to="." method="_on_VideoPlayer_finished"]
+[connection signal="next" from="Control" to="." method="_on_control_next"]
+[connection signal="kill" from="Node/Spikes" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes2" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes3" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes4" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes5" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes6" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes8" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes9" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes10" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes11" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes12" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes13" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes14" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes15" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes16" to="." method="_on_spikes_kill"]
+[connection signal="kill" from="Node/Spikes17" to="." method="_on_spikes_kill"]

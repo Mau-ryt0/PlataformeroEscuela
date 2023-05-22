@@ -59,6 +59,16 @@ process_mode = 1
 position = Vector2(464, 432)
 life = 0
 
+[node name="Brick7" parent="." instance=ExtResource("6")]
+process_mode = 1
+position = Vector2(464, 240)
+life = 0
+
+[node name="Brick8" parent="." instance=ExtResource("6")]
+process_mode = 1
+position = Vector2(496, 240)
+life = 0
+
 [node name="Star" parent="." instance=ExtResource("10")]
 process_mode = 1
 position = Vector2(576, 360)
@@ -128,6 +138,8 @@ texture = ExtResource("12_afq1c")
 [connection signal="broken" from="Brick4" to="." method="_on_Brick_broken"]
 [connection signal="broken" from="Brick5" to="." method="_on_Brick_broken"]
 [connection signal="broken" from="Brick6" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick7" to="." method="_on_Brick_broken"]
+[connection signal="broken" from="Brick8" to="." method="_on_Brick_broken"]
 [connection signal="GotStar" from="Star" to="." method="_on_Star_GotStar"]
 [connection signal="GotStar" from="Star" to="Player" method="_on_Star_GotStar"]
 [connection signal="finished" from="DeathSound" to="." method="_on_DeathSound_finished"]
